@@ -53,7 +53,6 @@ export class ErrorInterceptor implements HttpInterceptor {
               break;
           }
         }
-        console.log("ceva " + error);
         return throwError(error);
       })
     );
