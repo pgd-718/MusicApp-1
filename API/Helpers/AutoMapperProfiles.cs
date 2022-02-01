@@ -28,8 +28,6 @@ namespace API.Helpers
                     src.Sender.Photos.FirstOrDefault(X => X.IsMain).Url))
                 .ForMember(dest => dest.RecipientPhotoUrl, opt => opt.MapFrom(src => 
                     src.Recipient.Photos.FirstOrDefault(X => X.IsMain).Url));
-
-            CreateMap<DateTime, DateTime>().ConvertUsing(d => DateTime.SpecifyKind(d, DateTimeKind.Utc));
         }
     }
 }
