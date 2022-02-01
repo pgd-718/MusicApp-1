@@ -20,6 +20,8 @@ namespace API.Data
         }
 
         public DbSet<UserLike> Likes { get; set; }
+        public DbSet<FavouriteAlbum> FavouriteAlbums { get; set; }
+
         public DbSet<Message> Messages { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Connection> Connections { get; set; }
@@ -34,6 +36,12 @@ namespace API.Data
                 .WithOne(u => u.User)
                 .HasForeignKey(ur => ur.UserId)
                 .IsRequired();
+            
+            builder.Entity<AppUser>()
+                .HasOne(a => a.FavouriteAlbum)
+                .WithOne(b => b.AppUser)
+                .HasForeignKey<FavouriteAlbum>(e => e.FavouriteAlbumId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<AppRole>()
                 .HasMany(ur => ur.UserRoles)

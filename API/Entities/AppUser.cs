@@ -29,5 +29,8 @@ namespace API.Entities
         public ICollection<Message> MessagesReceived { get; set; }
         
         public ICollection<AppUserRole> UserRoles { get; set; }
+
+        public virtual FavouriteAlbum FavouriteAlbum { get; set; }
+        public int FavouriteAlbumId { get; set; }
     }
 }
